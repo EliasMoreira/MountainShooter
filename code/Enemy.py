@@ -13,16 +13,17 @@ class Enemy(Entity):
 
     def move(self):
         self.rect.centerx -= ENTITY_SPEED[self.name]
-        if self.rising:
-            if self.rect.top > 0:
-                self.rect.centery -= ENTITY_SPEED[self.name]
-            if self.rect.top == 0 or self.rect.top < 0:
-                self.rising = False
-        else:
-            if self.rect.bottom < WIN_HEIGHT:
-                self.rect.centery += ENTITY_SPEED[self.name] * 2
-            if self.rect.bottom == WIN_HEIGHT or self.rect.bottom > WIN_HEIGHT:
-                self.rising = True
+        if self.name == 'Enemy3':
+            if self.rising:
+                if self.rect.top > 0:
+                    self.rect.centery -= ENTITY_SPEED[self.name]
+                if self.rect.top == 0 or self.rect.top < 0:
+                    self.rising = False
+            else:
+                if self.rect.bottom < WIN_HEIGHT:
+                    self.rect.centery += ENTITY_SPEED[self.name] * 2
+                if self.rect.bottom == WIN_HEIGHT or self.rect.bottom > WIN_HEIGHT:
+                    self.rising = True
 
     def shoot(self):
         self.shot_delay -= 1
